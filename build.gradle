@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.7.20'
+    }
+}
+
+plugins {
+    id 'com.android.library' version '7.3.0'
+    id 'org.jetbrains.kotlin.android' version "$kotlinVersion"
+    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlinVersion"
+    id 'org.jetbrains.kotlin.plugin.parcelize' version "$kotlinVersion"
+}
+
+ext {
+    javaVersion = JavaVersion.VERSION_11
+
+    compileSdkVersion = 33
+    targetSdkVersion = 33
+    minSdkVersion = 33
+}
+
+android {
+    namespace "org.bubenheimer.definitelynotnullablebug"
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.javaVersion
+        targetCompatibility rootProject.ext.javaVersion
+    }
+
+    kotlinOptions {
+        jvmTarget = rootProject.ext.javaVersion
+    }
+}
